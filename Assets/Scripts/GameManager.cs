@@ -17,11 +17,11 @@ public class GameManager : MonoBehaviour
     public float score;
     public float scorePerSecond = 5f;
 
+    private bool isScoreFrozen;
+
     [Header("UI Scaling")]
     public Vector2 scoreFontSizeRange = new Vector2(36f, 96f);
     public Vector2 gameOverFontSizeRange = new Vector2(48f, 160f);
-
-    private bool scoringEnabled;
 
     void Awake()
     {
@@ -42,9 +42,7 @@ public class GameManager : MonoBehaviour
                 if (Input.anyKeyDown) StartGame();
                 break;
             case GameState.Playing:
-                if (!scoringEnabled) break;
-                score += scorePerSecond * Time.deltaTime;
-                SetUI();
+                TickScore();
                 break;
             case GameState.GameOver:
                 if (Input.anyKeyDown) Restart();
@@ -55,7 +53,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         State = GameState.Playing;
-        scoringEnabled = true;
+        isScoreFrozen = false;
         score = 0f;
         if (spawner) spawner.StartSpawn();
         if (gameOverText) gameOverText.gameObject.SetActive(false);
@@ -66,8 +64,8 @@ public class GameManager : MonoBehaviour
     {
         if (State != GameState.Playing) return;
 
+        isScoreFrozen = true;
         State = GameState.GameOver;
-        scoringEnabled = false;
         if (spawner) spawner.StopSpawn();
         if (gameOverText)
         {
@@ -81,6 +79,14 @@ public class GameManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void TickScore()
+    {
+        if (isScoreFrozen) return;
+
+        score += scorePerSecond * Time.deltaTime;
+        SetUI();
     }
 
     private void SetUI()
