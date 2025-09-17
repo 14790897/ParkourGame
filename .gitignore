@@ -1,0 +1,68 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+
+# Unity cache and generated files
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.unityproj
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+*.unitypackage
+*.stacktrace
+sysinfo.txt
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
+*.csproj
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.msscci
+*.aps
+*.ncb
+*.sdf
+*.cachefile
+*.tlog
+*.obj
+
+# Build artifacts
+[Bb]uilds?*/
+*.apk
+*.aab
+*.app
+*.ipa
+
+# Crash and profiler data
+CrashReport*/
+*.dmp
+*.memgraph
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+.plastic/
+
+
+.vscode/
+# ProjectSettings/
+Assets/TextMesh Pro/
